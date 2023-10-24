@@ -13,5 +13,11 @@ namespace CinemaWeb.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult Detail(string id)
+        {
+            ViewBag.title = id;
+            return PartialView("_Filmdetail");
+        }
     }
 }
