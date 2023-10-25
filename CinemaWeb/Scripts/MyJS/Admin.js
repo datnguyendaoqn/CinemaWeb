@@ -3,10 +3,10 @@ var formadd = document.querySelector('.form-add');
 var links = document.querySelectorAll('.link');
 var rows = document.querySelectorAll('.tb-row.detail');
 var viewdetail = document.querySelector('.partialview-detail');
-rows.forEach(r => r.addEventListener("click", function (e) {
+rows.forEach(r => r.addEventListener("dblclick", function (e) {
     var id = r.getAttribute("id");
     var xhr = new XMLHttpRequest();
-    console.log(id);
+    overlay.style.display = "block";
     // Xác định URL của hành động trong controller và phương thức GET
     document.querySelector(".partialview-detail").style.display = "flex";
     xhr.open("GET","/User/Detail/" + id, true);
@@ -18,14 +18,20 @@ rows.forEach(r => r.addEventListener("click", function (e) {
     };
     xhr.send();
 }))
-links.forEach(link => {
+rows.forEach(r => r.addEventListener("click", function () {
+    rows.forEach(r => r.classList.remove('active'));
+    r.classList.add('active')
+}))
+
+
+
+links.forEach(link => 
     link.addEventListener('click', function (e) {
-        links.forEach(element => {
-            element.classList.remove('active');
-        })
-        e.target.classList.add('active');
+        links.forEach(element => 
+            element.classList.remove('active'))
+        e.target.classList.add('active')
     })
-});
+)
 function turnoff(e) {
     var form = e.parentElement;
     overlay.style.display = 'none';

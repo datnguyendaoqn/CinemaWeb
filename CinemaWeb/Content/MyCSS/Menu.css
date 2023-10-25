@@ -62,9 +62,9 @@ html{
                 color: white;
             }
 
-            .menu li a.active {
+            .active {
                 background-color: rgb(98, 98, 98);
-                color: white;
+                color: white !important;
             }
 
 .log-out {
@@ -121,6 +121,10 @@ table th,td{
         background-color: #eee;
         cursor: pointer;
     }
+.tb-row.active:hover {
+    background-color: rgb(98, 98, 98);
+    color: white !important;
+}
 
 .form-add {
     text-align: center;
