@@ -62,9 +62,9 @@ html{
                 color: white;
             }
 
-            .menu li a.active {
+            .active {
                 background-color: rgb(98, 98, 98);
-                color: white;
+                color: white !important;
             }
 
 .log-out {
@@ -104,18 +104,27 @@ html{
 .body-content table {
     width: 100%;
     border-top: 1px solid black;
+    border-collapse:collapse;
+}
+.tb-row {
+    text-align: center;
+    height:30px;
+    border-bottom:1px solid rgb(98, 98, 98);
+}
+table th,td{
+    border-left:1px solid rgba(82, 80, 80, 0.5);
 }
 
-.tb-row {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid black;
-}
+
 
 .tb-row:hover {
         background-color: #eee;
         cursor: pointer;
     }
+.tb-row.active:hover {
+    background-color: rgb(98, 98, 98);
+    color: white !important;
+}
 
 .form-add {
     text-align: center;
@@ -130,8 +139,29 @@ html{
     z-index: 5;
     background-color: #eee;
     border-radius: 5px;
-    box-shadow: 1px 2px 10px 1px #265977 inset;
+    box-shadow: 1px 2px 10px 1px rgba(82, 80, 80, 0.5);
     display: none;
+    flex-direction:column;
+}
+.form-add .btn-submit{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    padding:15px;
+}
+.form-gr{
+    display:flex;
+    justify-content:space-between;
+    padding:5px;
+    align-items:center;
+}
+.form-gr input{
+    width:100%;
+    padding:5px;
+}
+.form-gr label{
+    min-width:100px;
+    text-align:start;
 }
 
 .overlay {
@@ -144,10 +174,45 @@ html{
     right: 0;
     z-index: 1;
 }
-    .overlay>button {
-       width: 50px;
-       height: 50px;
+.btn-close {
+       width: 35px;
+       height: 35px;
        font-size: 30px;
        position: absolute;
        right: 0;
+       top:0;
     }
+/*<!-------------PARTIALVIEW-DETAIL------------->*/
+.partialview-detail {
+    position: absolute;
+    width: 60%;
+    padding: 30px;
+    height: 60%;
+    border: 1px solid black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 1px 2px 10px 1px rgba(82, 80, 80, 0.5);
+    display:none;
+}
+.detail-img{
+        flex:2;
+        /*border:1px solid black;*/
+}
+.detail-content {
+    flex: 5;
+    /*border: 1px solid black;*/
+}
+.content-info{
+    display:flex;
+}
+.infor-label{
+    min-width:70px;
+}
+
+
+
+   

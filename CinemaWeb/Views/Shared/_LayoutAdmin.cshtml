@@ -33,10 +33,21 @@
         </div>
     </div>
     <div class="content">
+        <div class="head-content">
+            <h2>
+                @ViewBag.Title
+            </h2>
+            <div class="func">
+                <button class="btn" type="button" onclick="turnon(this)"> Add </button>
+                <button class="btn" type="button"> Delete</button>
+            </div>
+        </div>
+        <div class="partialview-detail">
+
+        </div>
         @RenderBody()
-    <div class="overlay">
-        <button type="button"  onclick="turnoff()"> X</button>
     </div>
+    <div class="overlay">
     </div>
 
     <script src="~/Scripts/MyJS/Admin.js"></script>

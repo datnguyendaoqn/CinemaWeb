@@ -1,29 +1,37 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Phim";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-<div class="form-add">
+<form method="post" class="form-add">
+    <button class="btn-close" type="button" onclick="turnoff(this)"> X</button>
     <div class="form-gr">
-        <label for="ten"> Ten </label>
-        <input type="text" name="ten" id="ten">
-    </div>
-    <div class="form-gr">
-        <label for="ten"> Ten </label>
-        <input type="text" name="ten" id="ten">
+        <label for="Name"> Name </label>
+        <input type="text" name="Name" id="Name">
     </div>
     <div class="form-gr">
-        <label for="ten"> Ten </label>
-        <input type="text" name="ten" id="ten">
+        <label for="Director"> Director </label>
+        <input type="text" name="Director" id="Director">
     </div>
-</div>
-<div class="head-content">
-    <h2>Quan li phim</h2>
-    <div class="func">
-        <button class="btn" type="button" onclick= "turnon()"> Them Phim</button>
-        <button class="btn" type="button"> Xoa Phim</button>
+    <div class="form-gr">
+        <label for="Category"> Category </label>
+        <input type="text" name="Category" id="Category">
     </div>
-</div>
+    <div class="form-gr">
+        <label for="Time"> Time </label>
+        <input type="number" placeholder="Minutes" name="Time" id="Time">
+    </div>
+    <div class="form-gr">
+        <label for="Description"> Description </label>
+        <input type="file" name="Description" id="Description">
+    </div>
+    <div class="form-gr">
+        <label for="Image"> Image </label>
+        <input type="file" name="Image" id="Image">
+    </div>
+    <button class="btn-submit" type="submit"> Add </button>
+</form>
+
 <div class="body-content">
     <table>
         <tr class="tb-row">
@@ -31,7 +39,17 @@
             <th> TheLoai </th>
             <th> Time </th>
         </tr>
-        <tr class="tb-row">
+        <tr class="tb-row detail">
+            <td> Phim1 </td>
+            <td> Fantasty</td>
+            <td> 1:40:05</td>
+        </tr>
+        <tr class="tb-row detail" id="1">
+            <td> Phim1 </td>
+            <td> Fantasty</td>
+            <td> 1:40:05</td>
+        </tr>
+        <tr class="tb-row detail">
             <td> Phim1 </td>
             <td> Fantasty</td>
             <td> 1:40:05</td>
