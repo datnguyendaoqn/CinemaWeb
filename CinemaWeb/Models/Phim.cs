@@ -20,6 +20,8 @@ namespace CinemaWeb.Models
         public string DaoDien { get; set; }
         public string TheLoai { get; set; }
         public Nullable<int> ID_Anh { get; set; }
+        public string Mota { get; set; }
+        public int ID { get; set; }
     
         public virtual Anh Anh { get; set; }
     }

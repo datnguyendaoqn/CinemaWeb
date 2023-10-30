@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CinemaTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CinemaTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Anh">
           <Key>
             <PropertyRef Name="ID" />
@@ -17,12 +17,14 @@
           <Key>
             <PropertyRef Name="MaPhim" />
           </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaPhim" Type="nvarchar" MaxLength="7" Nullable="false" />
           <Property Name="TenPhim" Type="nvarchar" MaxLength="100" />
           <Property Name="ThoiLuong" Type="int" />
           <Property Name="DaoDien" Type="nvarchar" MaxLength="50" />
           <Property Name="TheLoai" Type="nvarchar" MaxLength="100" />
           <Property Name="ID_Anh" Type="int" />
+          <Property Name="Mota" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_MaPhim_ID">
           <End Role="Anh" Type="Self.Anh" Multiplicity="0..1" />
@@ -44,8 +46,7 @@
             <End Role="Phim" EntitySet="Phim" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CinemaTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -69,6 +70,8 @@
           <Property Name="TheLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ID_Anh" Type="Int32" />
           <NavigationProperty Name="Anh" Relationship="Self.FK_MaPhim_ID" FromRole="Phim" ToRole="Anh" />
+          <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK_MaPhim_ID">
           <End Role="Anh" Type="Self.Anh" Multiplicity="0..1" />
@@ -108,6 +111,8 @@
           <EntitySetMapping Name="Phims">
             <EntityTypeMapping TypeName="CinemaTestModel.Phim">
               <MappingFragment StoreEntitySet="Phim">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
                 <ScalarProperty Name="MaPhim" ColumnName="MaPhim" />
                 <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
                 <ScalarProperty Name="ThoiLuong" ColumnName="ThoiLuong" />

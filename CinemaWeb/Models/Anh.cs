@@ -11,7 +11,8 @@ namespace CinemaWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Anh
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace CinemaWeb.Models
         {
             this.Phims = new HashSet<Phim>();
         }
-    
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         public string Image_path { get; set; }
         public string Image_type { get; set; }

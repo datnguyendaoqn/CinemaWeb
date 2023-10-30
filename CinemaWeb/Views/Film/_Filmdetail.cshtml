@@ -1,0 +1,43 @@
+﻿@model CinemaWeb.Models.PhimAnhModel
+   
+<div class="detail-img">
+    <img class="image" src=@Url.Content(Model.Anh.Image_path) alt="Phim_image" />
+</div>
+
+<div class="detail-content">
+    <form action="/Film/Edit" method="post" enctype="multipart/form-data">
+        <h2 class="title-film"> @Model.Phim.TenPhim </h2>
+        <br />
+        <input type="text" name="MaPhim" value=@Html.DisplayFor(model=>model.Phim.MaPhim) hidden />
+        <div class="form-gr hidden">
+            <label class="form-label">@Html.DisplayNameFor(model=>model.Phim.MaPhim)</label>
+            <input class="form-input" type="text" name="MaPhim" value="@Html.DisplayFor(model=>model.Phim.TenPhim)" />
+        </div>
+        <div class="form-gr">
+            <label class="form-label">@Html.DisplayNameFor(item => Model.Phim.ThoiLuong):</label>
+            <input class="form-input disabled-edit" type="text" name="ThoiLuong" value=@Html.DisplayFor(item => Model.Phim.ThoiLuong) readonly /> phut
+        </div>
+        <div class="form-gr">
+            <label class="form-label">@Html.DisplayNameFor(item => Model.Phim.TheLoai):</label>
+            <input class="form-input disabled-edit" type="text" name="TheLoai" value=@Html.DisplayFor(item => Model.Phim.TheLoai) readonly />
+        </div>
+        <div class="form-gr">
+            <label class="form-label"> @Html.DisplayNameFor(item => Model.Phim.DaoDien):</label>
+            <input class="form-input disabled-edit" type="text" name="DaoDien" value=@Html.DisplayFor(item => Model.Phim.DaoDien) readonly />
+        </div>
+        <div class="form-gr">
+            <label class="form-label" style="align-self:start">@Html.DisplayNameFor(item => Model.Phim.Mota):</label>
+            <textarea class="form-input disabled-edit" name="Mota" readonly>@Html.DisplayFor(item => Model.Phim.Mota)</textarea>
+        </div>
+
+        <div class="form-gr hidden">
+            <label class="form-label"> Image</label>
+            <input class="form-input file-input" type="file" name="Image" />
+        </div>
+        <div class="func">
+            <button type="button" class="enable-edit">Edit</button>
+            <button type="submit" class="confirm-edit">OK</button>
+        </div>
+    </form>
+</div>
+<button class="btn-close" onclick="turnoff(this)"> X </button>
