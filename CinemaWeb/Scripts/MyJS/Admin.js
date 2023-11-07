@@ -50,6 +50,7 @@ function eventFormDetail(View) {
     inputs.forEach(i => {
         if (i.hasAttribute("readonly"))
         {
+           
             i.classList.remove("disabled-edit")
             i.removeAttribute("readonly");
         }

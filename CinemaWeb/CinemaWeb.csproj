@@ -231,6 +231,7 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Film\Index.cshtml" />
     <Content Include="Views\Film\_Filmdetail.cshtml" />
+    <Content Include="Views\Film\FilmAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,47 @@
+﻿@model CinemaWeb.Models.Phim
+@{
+    var data = (ViewDataDictionary)ViewData["data"];
+    bool? isvalid = (bool?)data["isvalid"];
+}
+<form method="post" class="form-add" enctype="multipart/form-data" action="/Film/Add">
+    <button class="btn-close" type="button" onclick="turnoff(this)"> X</button>
+    <div class="form-gr">
+        <label class="form-label"> MaPhim </label>
+        <input class="form-input" type="text" name="MaPhim">
+           @Html.ValidationMessageFor(model => model.MaPhim)
+    </div>
+    <div class="form-gr">
+        <label class="form-label"> Name </label>
+        <input class="form-input" type="text" name="TenPhim">
+    </div>
+    <div class="form-gr">
+        <label class="form-label"> Director </label>
+        <input class="form-input" type="text" name="DaoDien" id="Director">
+    </div>
+    <div class="form-gr">
+        <label class="form-label"> Category </label>
+        <input class="form-input" type="text" name="TheLoai" id="Category">
+    </div>
+    <div class="form-gr">
+        <label class="form-label"> Time </label>
+        <input class="form-input" type="number" placeholder="Time" name="ThoiLuong">
+    </div>
+
+    <div class="form-gr">
+        <label class="form-label" style="align-self:start"> Description </label>
+        <textarea class="form-input" name="Mota">  </textarea>
+    </div>
+    <div class="form-gr">
+        <label class="form-label"> Image </label>
+        <input class="form-input" type="file" name="Image" id="Image">
+    </div>
+    <button class="btn-submit" type="submit"> Add </button>
+</form>
+@if (isvalid.HasValue && !isvalid.Value)
+            {
+                <script>
+                    document.addEventListener("DOMContentLoaded", function (event) {
+                        turnon()
+                    });
+                </script>
+            }

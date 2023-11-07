@@ -11,10 +11,14 @@ namespace CinemaWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Phim
     {
+        [Required(ErrorMessage ="Khong duoc de trong")]
         public string MaPhim { get; set; }
+        [Required(ErrorMessage = "Khong duoc de trong")]
+
         public string TenPhim { get; set; }
         public Nullable<int> ThoiLuong { get; set; }
         public string DaoDien { get; set; }

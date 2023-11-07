@@ -1,9 +1,12 @@
 ﻿@model CinemaWeb.Models.PhimAnhModel
-   
-<div class="detail-img">
-    <img class="image" src=@Url.Content(Model.Anh.Image_path) alt="Phim_image" />
-</div>
+    @{ 
+        var path = Model.Anh.Image_path==null?" ":Model.Anh.Image_path;
+    }
 
+    
+<div class="detail-img">
+    <img class="image" src=@Url.Content(path) alt="Phim_image" />
+</div>
 <div class="detail-content">
     <form action="/Film/Edit" method="post" enctype="multipart/form-data">
         <h2 class="title-film"> @Model.Phim.TenPhim </h2>

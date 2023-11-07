@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
+using System.Web.WebPages.Html;
 
 namespace CinemaWeb.Controllers
 {
@@ -12,8 +14,18 @@ namespace CinemaWeb.Controllers
     {
         // GET: User
         CinemaTestEntities DB = new CinemaTestEntities();
-        public ActionResult Index(bool? UseLayout)
+        public ActionResult Index(bool? UseLayout,bool? isvalid)
         {
+            var modelstate = TempData["modelstate"] as System.Web.Mvc.ModelStateDictionary;
+            ViewData["model"] = TempData["model"] != null? TempData["model"]:new Phim() ;
+            var valid = isvalid;
+            if(modelstate != null)
+            {
+                ModelState.Merge(modelstate);
+            }
+
+            var data = new ViewDataDictionary { { "isvalid", valid }, { "modelstate", modelstate } };
+            ViewData["data"] = data;
             if(UseLayout.HasValue && !UseLayout.Value) 
             {
                 ViewBag.Layout = false;
@@ -23,14 +35,21 @@ namespace CinemaWeb.Controllers
         public ActionResult Detail(string id)
         {
             var phim = DB.Phims.Find(id);
-            var anh = DB.Anhs.Find(phim.ID_Anh);
+            var anh = DB.Anhs.Find(phim.ID_Anh) == null ? new Anh() : DB.Anhs.Find(phim.ID_Anh);
             var phimanh = new PhimAnhModel() { Anh = anh ,Phim = phim };
-            return PartialView("_Filmdetail",phimanh);
+            return PartialView("_Filmdetail",phimanh); 
         }
         [HttpPost]
         public ActionResult Add(Phim model,HttpPostedFileBase Image) 
         {
-                if(Image != null)
+            if(!ModelState.IsValid)
+            {
+                TempData["modelstate"] = ModelState;
+                TempData["model"] = model;
+                return RedirectToAction("Index", new {isvalid = false});
+
+            }
+            if (Image != null)
                 {
                 var filename = Image.FileName;
                 var newname = Guid.NewGuid().ToString() + Path.GetExtension(filename);
